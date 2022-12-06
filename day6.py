@@ -9,7 +9,7 @@ def is_distinct(input_str):
             return False
     return True
 
-
+# Not a nice solution, but oh well
 
 for i in range(14, len(line)):
     seg = line[i-14: i]
