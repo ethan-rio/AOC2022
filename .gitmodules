@@ -1,4 +1,0 @@
-[submodule "ethan-phan"]
-	path = ethan-phan
-	url = https://github.com/ethan-rio/AOC2022
-	branch = main
