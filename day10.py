@@ -9,6 +9,15 @@ nth_cycle = [20, 60, 100, 140, 180, 220]
 arrays = [1]
 X = 1
 cycle = 0
+grid = [['X' for _ in range(40)] for _ in range(6)]
+total = 0
+def draw(t, x):
+    t1 = t-1
+    grid[t1//40][t1%40] = ('#' if abs(x-(t1%40))<=1 else ' ')
+    if t in nth_cycle:
+        total += x*t
+
+
 
 for l in lines:
     params = l.split(" ")
@@ -38,3 +47,5 @@ print(total)
 
             
 
+for r in range(6):
+    print(''.join(grid[r]))
