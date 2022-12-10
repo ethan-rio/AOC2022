@@ -10,13 +10,15 @@ arrays = [1]
 X = 1
 cycle = 0
 grid = [['X' for _ in range(40)] for _ in range(6)]
-total = 0
-def draw(t, x):
-    t1 = t-1
-    grid[t1//40][t1%40] = ('#' if abs(x-(t1%40))<=1 else ' ')
-    if t in nth_cycle:
-        total += x*t
-
+def draw(cycle, x):
+    i = cycle-1
+    global grid
+    row = i // 40
+    col = i % 40
+    if abs(x-(i%40))<=1:
+        grid[row][col] = 'E'
+    else:
+        grid[row][col] = ' '
 
 
 for l in lines:
@@ -24,17 +26,16 @@ for l in lines:
     cmd = params[0]
     if len(params) > 1:
         reg_temp = int(params[1]) 
-    # print("Cur X: ", X, " ----- Input: ",reg_temp)
     if cmd == 'noop':
         cycle += 1
         arrays.append(X)
-        print(cycle, ": ", X)
+        draw(cycle, X)
     if cmd == 'addx':
         for i in range(2):
             cycle += 1
+            draw(cycle, X)
             if i == 1:
                 X += reg_temp
-            print(cycle, ": ", X)
             arrays.append(X)
 print(arrays)
 
@@ -45,7 +46,8 @@ for i in nth_cycle:
 
 print(total)
 
+for i in range(6):
+    print(''.join(grid[i]))
+
             
 
-for r in range(6):
-    print(''.join(grid[r]))
