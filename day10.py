@@ -1,37 +1,40 @@
-import sys
 from collections import defaultdict
-infile = sys.argv[1] if len(sys.argv)>1 else 'day10.txt'
-data = open(infile).read().strip()
-lines = [x for x in data.split('\n')]
+import numpy as np
+with open("day10.txt", "r") as f:
+    lines = [l.strip() for l in f.readlines()]
 
+# print(len(lines))
 
-G = [['?' for _ in range(40)] for _ in range(6)]
-p1 = 0
-x = 1
-t = 0
+nth_cycle = [20, 60, 100, 140, 180, 220]
+arrays = [1]
+X = 1
+cycle = 0
 
-def handle_tick(t, x):
-    global p1
-    global G
-    t1 = t-1
-    G[t1//40][t1%40] = ('#' if abs(x-(t1%40))<=1 else ' ')
-    if t in [20, 60, 100, 140, 180, 220]:
-        p1 += x*t
+for l in lines:
+    params = l.split(" ")
+    cmd = params[0]
+    if len(params) > 1:
+        reg_temp = int(params[1]) 
+    # print("Cur X: ", X, " ----- Input: ",reg_temp)
+    if cmd == 'noop':
+        cycle += 1
+        arrays.append(X)
+        print(cycle, ": ", X)
+    if cmd == 'addx':
+        for i in range(2):
+            cycle += 1
+            if i == 1:
+                X += reg_temp
+            print(cycle, ": ", X)
+            arrays.append(X)
+print(arrays)
 
-for line in lines:
-    words = line.split()
-    if words[0] == 'noop':
-        t += 1
-        handle_tick(t,x)
-    elif words[0] == 'addx':
-        t += 1
-        handle_tick(t,x)
-        t += 1
-        handle_tick(t,x)
-        x += int(words[1])
-print(p1)
-for r in range(6):
-    print(''.join(G[r]))
+total = 0
+for i in nth_cycle:
+    total += arrays[i-1] * i
+    
+
+print(total)
 
             
 
