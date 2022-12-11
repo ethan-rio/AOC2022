@@ -75,4 +75,4 @@ for i in range(rounds):
                 items_monkey_list[true].append(item)
         items_monkey_list[j] = []
     
-print(sorted(counts)[-1] * sorted(counts)[-2])
+print(f"PART {part}: ", sorted(counts)[-1] * sorted(counts)[-2])
