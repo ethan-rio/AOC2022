@@ -12,4 +12,4 @@ For any problem solving enthusiasts out there, it's that time of the year again 
 
 Once you have signed up at [Advent of code](https://adventofcode.com/2022/auth/login), go to the [Leaderboards](https://adventofcode.com/2022/leaderboard/private) section and join using the code ```2343282-4926a4f6```
 
-Github for RioTinto Leaderboard is at [Repo](https://github.com/rio-tinto/adventofcode2022)
+Github for RioTinto team is at [Repo](https://github.com/rio-tinto/adventofcode2022)
